@@ -49,7 +49,7 @@ This project uses the **[Bone Fracture Detection Dataset](https://universe.robof
 
 ---
 
-## 📁 Project Structure
+
 ## 📁 Project Structure
 
 ```plaintext
