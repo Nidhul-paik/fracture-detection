@@ -1,0 +1,5 @@
+train: /your/train/path
+val: /your/val/path
+
+nc: 1
+names: ['fracture']

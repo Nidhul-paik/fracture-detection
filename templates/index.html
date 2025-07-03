@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fracture Detection App</title>
+    <link href=’https://fonts.googleapis.com/css?family=Gruppo’ rel=’stylesheet’> 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Import Lato Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body { font-family: ‘Gruppo’;font-size: 22px;background-color:#1b1d29; }
+
+        .navbar {
+            background: transparent;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: 600;
+            color: white !important;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            font-size: 15px;
+            font-weight: 900;
+            letter-spacing: 3.5px;
+            margin: 0 20px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #72dcff !important;
+        }
+
+        
+
+        .main-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .main-content h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .main-content p {
+            font-size: 18px;
+            font-weight: 400;
+            color: #555;
+        }
+        .main{
+            height: 100vh;
+            width:100%;
+            background-color:#1b1d29;
+            position: relative;
+            top: -69px;
+            overflow: hidden;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            
+           
+        }
+        .image{
+            background-image: url('/static/main.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            width:80%;
+            height: 80%;
+            box-shadow: inset 268px 22px 176px 179px #1b1d29;
+           border-radius: 30%;
+        }
+        .col-md-4{
+          width: 32.333%;
+          background: transparent;
+          
+        }
+       .card{
+        background:transparent;
+        box-shadow: 0px 2px 0px 0px white;
+       }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <!-- Logo and Brand Name -->
+            <a class="navbar-brand" href="#">
+                
+                <h3 style="font-weight: 900;letter-spacing: 8px;font-size: 29px;">OrthoTrack</h3>
+            </a>
+
+            <!-- Toggle Button for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto text-light">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+
+   
+    
+    <!-- Features Section -->
+    <section class="main">
+        
+            <style>
+                .OrthoTrack {
+                    position: relative;
+                    
+                    height: -0.29em;
+                    color: transparent;
+                    font-family: 'Cambay', sans-serif;
+                    font-size: 4vw;
+                    font-weight: 700;
+                    letter-spacing: -0.02em;
+                    line-height: 1.03em;
+                  }
+                  
+                  .OrthoTrack > div {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    color: white;
+                    pointer-events: none;
+                  }
+                  
+                  .OrthoTrack > div:nth-child(1) {
+                    -webkit-mask-image: linear-gradient(black 25%, transparent 25%);
+                    mask-image: linear-gradient(black 25%, transparent 25%);
+                    animation: OrthoTrack1 5s infinite;
+                  }
+                  
+                  .OrthoTrack > div:nth-child(2) {
+                    -webkit-mask-image: linear-gradient(transparent 25%, black 25%, black 50%, transparent 50%);
+                    mask-image: linear-gradient(transparent 25%, black 25%, black 50%, transparent 50%);
+                    animation: OrthoTrack2 5s infinite;
+                  }
+                  
+                  .OrthoTrack > div:nth-child(3) {
+                     -webkit-mask-image: linear-gradient(transparent 50%, black 50%, black 75%, transparent 75%);
+                    mask-image: linear-gradient(transparent 50%, black 50%, black 75%, transparent 75%);
+                    animation: OrthoTrack3 5s infinite;
+                  }
+                  
+                  .OrthoTrack > div:nth-child(4) {
+                     -webkit-mask-image: linear-gradient(transparent 75%, black 75%);
+                    mask-image: linear-gradient(transparent 75%, black 75%);
+                    animation: OrthoTrack4 5s infinite;
+                  }
+                  
+                  @keyframes OrthoTrack1 {
+                    0% {
+                      transform: translateX(100%);
+                    }
+                    26% {
+                      transform: translateX(0%);
+                    }
+                    83% {
+                      transform: translateX(-0.1%);
+                    }
+                    100% {
+                      transform: translateX(-120%);
+                    }
+                  }
+                  
+                  @keyframes OrthoTrack2 {
+                    0% {
+                      transform: translateX(100%);
+                    }
+                    24% {
+                      transform: translateX(0.5%);
+                    }
+                    82% {
+                      transform: translateX(-0.2%);
+                    }
+                    100% {
+                      transform: translateX(-125%);
+                    }
+                  }
+                  
+                  @keyframes OrthoTrack3 {
+                    0% {
+                      transform: translateX(100%);
+                    }
+                    22% {
+                      transform: translateX(0%);
+                    }
+                    81% {
+                      transform: translateX(0%);
+                    }
+                    100% {
+                      transform: translateX(-130%);
+                    }
+                  }
+                  
+                  @keyframes OrthoTrack4 {
+                    0% {
+                      transform: translateX(100%);
+                    }
+                    20% {
+                      transform: translateX(0%);
+                    }
+                    80% {
+                      transform: translateX(0%);
+                    }
+                    100% {
+                      transform: translateX(-135%);
+                    }
+                  }
+            </style>
+            <div style="overflow: hidden; height:200px; width:700px; position:relative; top:-110px; left:15px;">
+              <div class="OrthoTrack">
+                OrthoTrack
+                <div>OrthoTrack</div>
+                <div>OrthoTrack</div>
+                <div>OrthoTrack</div>
+                <div>OrthoTrack</div>
+              </div>
+            </div>
+       
+
+            <div class="image">
+              <p  style="position: relative;color:gray; top:240px; left: -280px;">Instant Diagnosis, Accurate Results — Revolutionizing Fracture Detection with AI.</p>
+
+            </div>
+    </section>
+    
+    <!-- About Section -->
+<section id="about" class="container-fluid py-5" style="background-color: transparent;">
+  <div class="container">
+    <!-- Section Title -->
+    <div class="row text-center mb-5">
+      <div class="col">
+        <h1 class="display-5 fw-bold" style="color: white;">About OrthoTrack</h1>
+        <p class="lead text-secondary">
+          Revolutionizing fracture detection with the power of Artificial Intelligence.
+        </p>
+      </div>
+    </div>
+
+    <!-- About Content -->
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img src="/static/about.jpg" alt="Fracture Detection" class="img-fluid rounded-3 shadow-lg">
+      </div>
+      <div class="col-md-6">
+        <h3 class="fw-bold" style="color: white;">What is OrthoTrack?</h3>
+        <p class="text-secondary">
+          OrthoTrack is a powerful AI-driven web application designed to detect fractures in arm X-ray images within seconds. 
+          Our system uses <strong>YOLOv8</strong> for image processing and <strong>Flask</strong> for web deployment, ensuring real-time and accurate detection.
+        </p>
+        <p class="text-secondary">
+          The primary goal of OrthoTrack is to assist healthcare professionals and reduce diagnosis time, especially in remote healthcare centers.
+        </p>
+        <a href="#upload" class="btn btn-primary mt-3">Upload X-ray Image</a>
+      </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="row mt-5 text-center">
+      <div class="col-md-4">
+        <div class="card border-0  p-4">
+          <h5 class="fw-bold text-light">⚡ Instant Results</h5>
+          <p class="text-secondary">Get instant fracture detection within seconds with our AI model.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-0  p-4">
+          <h5 class="fw-bold text-light">🔬 Accurate Detection</h5>
+          <p class="text-secondary">We use advanced deep learning models to ensure high accuracy.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-0  p-4">
+          <h5 class="fw-bold text-light">🌍 Remote Healthcare</h5>
+          <p class="text-secondary">Our platform helps remote healthcare facilities with fast diagnosis.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vision Section -->
+    <div class="row mt-5">
+      <div class="col-md-12 text-center">
+        <h3 class="fw-bold" style="color: white;">Our Vision</h3>
+        <p class="text-secondary">
+          Our vision is to make fracture detection easier, faster, and more accessible worldwide. OrthoTrack aims to revolutionize healthcare by offering instant AI-powered diagnosis.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+ 
+  
+
+  .upload-box {
+      background-color:#32333c;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+  }
+
+  .upload-box h2 {
+      font-weight: bold;
+      color: #007BFF;
+  }
+
+  .upload-box p {
+      color: #777;
+  }
+
+  .file-input {
+      background-color: #32333c;
+      border: 2px dashed #007BFF;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      cursor: pointer;
+  }
+
+  .file-input input {
+      display: block;
+  }
+
+  .file-input i {
+      font-size: 50px;
+      color: #007BFF;
+  }
+
+  .file-input p {
+      margin-top: 15px;
+      font-weight: bold;
+  }
+
+  .btn-primary {
+      background-color: #007BFF;
+      border: none;
+  }
+
+  .btn-primary:hover {
+      background-color: #0056b3;
+  }
+
+  .result-box {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+  }
+
+  .result-box img {
+      max-width: 200px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+  }
+
+  .result-box h4 {
+      font-weight: bold;
+  }
+</style>
+
+
+<div class="container p-y"style="height:100vh;">
+<div class="text-center mb-5">
+  <h1 class="fw-bold text-primary">Try It - Upload X-ray</h1>
+  <p class="text-secondary">Upload your X-ray image and let OrthoTrack detect the fracture for you.</p>
+</div>
+
+<!-- Upload Box -->
+<div class="upload-box text-center">
+  <h2>Upload Your X-ray Image</h2>
+  <p>Supported File Types: .png, .jpg, .jpeg</p>
+
+  <form action="/predict" method="post" enctype="multipart/form-data">
+      <div class="file-input">
+          <input type="file" style="width: 100%; opacity:0;" name="file" id="file" accept=".png, .jpg, .jpeg" required>
+          
+          <p>Click to Upload  File Here</p>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-4">Detect Fracture</button>
+  </form>
+</div>
+<div class="container">
+  <h1 class="text-light">Live Fracture Detection</h1>
+   <a href="/video_feed" style="text-decoration: none; ">try it</a>
+ 
+ </div>
+<!-- Result Section -->
+<div class="result-box mt-5" id="result">
+  <h4>Fracture Detected</h4>
+  <img src="https://via.placeholder.com/150" alt="X-ray Image" id="preview-image">
+  <p><strong>Result:</strong> <span id="result-text">No Fracture Detected</span></p>
+</div>
+</div>
+
+
+
+    <!-- Contact Section -->
+    <section class="py-5" style="height: 10vh;">
+        <div class="container text-center">
+            <h2 style="color: #007BFF;">Contact Us</h2>
+            <p>Email: support@orthotrack.com</p>
+            <p>Phone: +91 98765 43210</p>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <!-- Footer Section -->
+<footer class="bg-dark text-white pt-5 pb-4">
+  <div class="container text-center text-md-start">
+      <div class="row text-center text-md-start">
+          
+          <!-- About Section -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h5 class="text-uppercase mb-4 fw-bold text-info">OrthoTrack</h5>
+              <p>
+                  OrthoTrack is an AI-powered fracture detection system that analyzes X-ray images in seconds, ensuring fast and accurate diagnosis for patients and healthcare providers.
+              </p>
+          </div>
+
+          <!-- Quick Links Section -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h5 class="text-uppercase mb-4 fw-bold text-info">Quick Links</h5>
+              <p><a href="#" class="text-white text-decoration-none">Home</a></p>
+              <p><a href="#about" class="text-white text-decoration-none">About</a></p>
+              <p><a href="#upload" class="text-white text-decoration-none">Upload X-ray</a></p>
+              <p><a href="#contact" class="text-white text-decoration-none">Contact Us</a></p>
+          </div>
+
+          <!-- Contact Section -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h5 class="text-uppercase mb-4 fw-bold text-info">Contact Us</h5>
+              <p><i class="fas fa-envelope"></i> support@orthotrack.com</p>
+              <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+              <p><i class="fas fa-map-marker-alt"></i> Kerala, India</p>
+          </div>
+
+          <!-- Social Media Section -->
+          <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mt-3">
+              <h5 class="text-uppercase mb-4 fw-bold text-info">Follow Us</h5>
+              <a href="#" class="text-white text-decoration-none me-3">
+                  <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="text-white text-decoration-none me-3">
+                  <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="text-white text-decoration-none me-3">
+                  <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="text-white text-decoration-none">
+                  <i class="fab fa-linkedin-in"></i>
+              </a>
+          </div>
+      </div>
+
+      <!-- Copyright Section -->
+      <div class="row mt-4">
+          <div class="col text-center">
+              <p class="mb-0">&copy; 2025 OrthoTrack. All Rights Reserved.</p>
+          </div>
+      </div>
+  </div>
+</footer>
+
+<!-- Font Awesome Icons CDN -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Scripts -->
+    <script>
+        // JavaScript for handling the upload button
+        const uploadBtn = document.querySelector('.upload-btn');
+        uploadBtn.addEventListener('click', () => {
+            alert('Upload functionality will be integrated with your fracture detection model.');
+            // Add logic to upload and process the image using your best.pt model
+        });
+    </script>
+    <script src="// https://www.youtube.com/watch?v=SftSleFVYhE#t=27s"></script>
+    <!-- Font Awesome CDN for Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+    
+</body>
+</html>
